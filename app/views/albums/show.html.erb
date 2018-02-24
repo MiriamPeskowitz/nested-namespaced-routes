@@ -10,4 +10,16 @@
 </ul>
 
 <h2>Add a Picture</h2>
+<%= form_for(Picture.new, :url => album_pictures_path(@album) do |f| %>
+<%= f.hidden_field :album_id, {:value => @album.id} %>
+
+change to 
+	<%= form_for([@album, @album.pictures.build]) do |f| %>
+<p>
+	<%= f.text_field :url %>
+</p>
+
+<p> <%= f.submit %> </p>
+<% end %>
               
+why not Picture.new? we don't want a blank, we want the actual one: 
